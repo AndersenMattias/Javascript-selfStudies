@@ -3,34 +3,12 @@ let form = document.getElementById('form');
 let table = document.getElementById('table');
 let tableBody = document.querySelector('tbody');
 
-// form values
-let name = document.getElementById('name');
-let age = document.getElementById('age');
-let telephone = document.getElementById('telephone');
-let email = document.getElementById('email');
-
-
-
-
-function onAddContact(e) {
-  e.preventDefault();
-  tableBody.innerHTML += `
-    <tr>
-      <td>${form.toDo.value}</td>
-      <td><button class="btn-edit">Edit</button></td>
-      <td><button class="btn-delete">Delete</button></td>
-    <tr>
-  `;
-}
-
 function init() {
   fetch('https://jsonplaceholder.typicode.com/todos')
   .then((response) => response.json())  
-  .then((data) => {
+  .then((data) => {    
     
-    
-    for(let i = 0; i < data.length; i++) { 
-      
+    for(let i = 0; i < data.length; i++) {       
       tableBody.innerHTML += `      
       <tr>
         <td>userId: ${data[i].userId}</td>
@@ -45,15 +23,7 @@ function init() {
   });
 }
 
-// show contacts
-// function displayContacts() {
-//   table.style.display = 'block';
-// }
-
-// EventListeners
-form.addEventListener('submit', onAddContact);
-
-// Delete btn for contact
+// Delete btn
 tableBody.addEventListener('click', (event) => {
   // remove contact -->
   const button = event.target;
@@ -66,7 +36,7 @@ tableBody.addEventListener('click', (event) => {
     }
   }
 
-  // edit contact -->
+  /* edit value
   if ('TD' === event.target.tagName) {
     let value = event.target.textContent;
 
@@ -81,8 +51,8 @@ tableBody.addEventListener('click', (event) => {
     event.target.textContent = '';
     event.target.appendChild(input);
     input.select();
-  }
-});
+  }*/
+}); 
 
 init();
 
