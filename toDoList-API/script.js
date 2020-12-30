@@ -5,22 +5,28 @@ function init() {
   .then((response) => response.json())  
   .then((data) => {    
     
-    for(let i = 0; i < 10; i++) {       
+    for(let i = 0; i < 10; i++) {     
+      console.log(data[i]);  
       tableBody.innerHTML += `      
-        <td>userId: ${data[i].userId}</td>
-        <td>id: ${data[i].id}</td>
-        <td>title: ${data[i].title}</td>             
-        <td>Completed: ${data[i].completed}</td>            
+        <td class="completed active"><b>userId:</b> ${data[i].userId}</td>
+        <td class="completed active"><b>id:</b> ${data[i].id}</td>
+        <td class="completed active"><b>title:</b> ${data[i].title}</td>             
+        <td class="completed active"><b>Completed:</b> ${data[i].completed}</td>            
         <td><button class="btn-delete">Delete</button></td>      
-    `; 
-    }
+        
+    `;    
 
-  });
+    if(data[i].completed === true) {
+       
+    }
+  }
+  
+});
+
 }
 
 // Delete btn
 tableBody.addEventListener('click', (event) => {
-  // remove contact -->
   const button = event.target;
 
   if (event.target.classList.contains('btn-delete')) {
