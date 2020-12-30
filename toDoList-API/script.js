@@ -5,20 +5,17 @@ function init() {
   .then((response) => response.json())  
   .then((data) => {    
     
-    for(let i = 0; i < 10; i++) {     
+    for(let i = 0; i < 30; i++) {     
       console.log(data[i]);  
       tableBody.innerHTML += `      
-        <td class="completed active"><b>userId:</b> ${data[i].userId}</td>
-        <td class="completed active"><b>id:</b> ${data[i].id}</td>
-        <td class="completed active"><b>title:</b> ${data[i].title}</td>             
-        <td class="completed active"><b>Completed:</b> ${data[i].completed}</td>            
-        <td><button class="btn-delete">Delete</button></td>      
-        
-    `;    
+      <td class="${data[i].completed === true ? 'completed' : 'active'}"><b>userId:</b>  ${data[i].userId}</td>
+      <td class="${data[i].completed === true ? 'completed' : 'active'}"><b>id:</b> ${data[i].id}</td>
+      <td class="${data[i].completed === true ? 'completed' : 'active'}"><b>title:</b> ${data[i].title}</td>             
+      <td class="${data[i].completed === true ? 'completed' : 'active'}"><b>Completed:</b> ${data[i].completed}</td>       
+      <td><button class="btn-done">Done!</button></td>         
+      <td><button class="btn-delete">Delete</button></td>      
+  `;             
 
-    if(data[i].completed === true) {
-       
-    }
   }
   
 });
