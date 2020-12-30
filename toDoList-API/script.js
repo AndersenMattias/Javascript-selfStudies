@@ -1,6 +1,3 @@
-// form / table
-let form = document.getElementById('form');
-let table = document.getElementById('table');
 let tableBody = document.querySelector('tbody');
 
 function init() {
@@ -8,15 +5,13 @@ function init() {
   .then((response) => response.json())  
   .then((data) => {    
     
-    for(let i = 0; i < data.length; i++) {       
+    for(let i = 0; i < 10; i++) {       
       tableBody.innerHTML += `      
-      <tr>
         <td>userId: ${data[i].userId}</td>
         <td>id: ${data[i].id}</td>
         <td>title: ${data[i].title}</td>             
         <td>Completed: ${data[i].completed}</td>            
-        <td><button class="btn-delete">Delete</button></td>
-      <tr>
+        <td><button class="btn-delete">Delete</button></td>      
     `; 
     }
 
@@ -27,7 +22,7 @@ function init() {
 tableBody.addEventListener('click', (event) => {
   // remove contact -->
   const button = event.target;
-  const tr = button.parentNode;
+
   if (event.target.classList.contains('btn-delete')) {
     if (confirm('Do you really want to remove this contact?')) {
       button.closest('tr').remove();
@@ -36,7 +31,7 @@ tableBody.addEventListener('click', (event) => {
     }
   }
 
-  /* edit value
+  // edit value
   if ('TD' === event.target.tagName) {
     let value = event.target.textContent;
 
@@ -51,7 +46,7 @@ tableBody.addEventListener('click', (event) => {
     event.target.textContent = '';
     event.target.appendChild(input);
     input.select();
-  }*/
+  }
 }); 
 
 init();
